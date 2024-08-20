@@ -1,9 +1,9 @@
 # Projeto .NET para Consultas em uma API de Pokémon
 
-##Descrição
+## Descrição
 Este projeto foi desenvolvido para realizar consultas em uma API de Pokémon. Ele permite ao usuário visualizar informações detalhadas de diferentes espécies de Pokémon em formato JSON.
 
-##Instruções para Clonar e Executar
+## Instruções para Clonar e Executar
 
 1. Crie uma pasta em um diretório de sua preferência:
 Navegue até o local onde deseja salvar o projeto no seu computador.
@@ -26,8 +26,8 @@ Localize e execute o arquivo Console.App para iniciar o programa.
 Após a execução, o aplicativo apresentará uma lista de espécies de Pokémon.
 Escolha uma das opções para visualizar os dados completos do Pokémon selecionado em formato JSON.
 
-##Requisitos
+## Requisitos
 .NET SDK instalado na máquina.
 
-##Observações
+## Observações
 Certifique-se de ter uma conexão com a internet ativa para que as consultas à API sejam realizadas com sucesso.
