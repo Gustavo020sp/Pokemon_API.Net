@@ -13,31 +13,31 @@ namespace Pokemon_API
             {
                 Console.WriteLine("Opções de pokémon:");
                 Console.WriteLine("Bulbasaur [1]" + Environment.NewLine + "Ivysaur [2]" + Environment.NewLine + "Venusaur [3]");
-                Console.Write("Digite o número que deseja > ");
+                Console.Write("Digite o número do pokémon que deseja > ");
 
                 response = Convert.ToInt32(Console.ReadLine());
 
                 if (response > 3)
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Choose a valid pokémon number." + Environment.NewLine);
                 }
 
                 else
                 {
-                    if (response == 1)
+                    switch (response)
                     {
-                        pokemon_url = $"https://pokeapi.co/api/v2/pokemon/1/";
+                        case 1:
+                            pokemon_url = $"https://pokeapi.co/api/v2/pokemon/1/";
+                            break;
+                        case 2:
+                            pokemon_url = $"https://pokeapi.co/api/v2/pokemon/2/";
+                            break;
+                        case 3:
+                            pokemon_url = $"https://pokeapi.co/api/v2/pokemon/3/";
+                            break;
                     }
-                    if (response == 2)
-                    {
-                        pokemon_url = $"https://pokeapi.co/api/v2/pokemon/2/";
-                    }
-                    if (response == 3)
-                    {
-                        pokemon_url = $"https://pokeapi.co/api/v2/pokemon/3/";
-                    }
-                    //Invoke Get method
-                    InvokeGet(pokemon_url);
+                    InvokeGet(pokemon_url);                  
                 }
 
             } while (response > 3);
