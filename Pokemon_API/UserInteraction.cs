@@ -136,6 +136,7 @@ namespace Pokemon_API
                         }
                     } while (mascotnumber == 0 || mascotnumber > 3);
                     break;
+
                 case 2:
                     if (has_mascot == false)
                     {
@@ -147,8 +148,8 @@ namespace Pokemon_API
                     }
                     break;
             }
-
         }
+
         public static void InvokeGet(string pokemon_url)
         {
             var client = new RestSharp.RestClient(pokemon_url);
