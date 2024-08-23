@@ -24,11 +24,11 @@ namespace Pokemon_API.Entities
                 abilityname += "- " + abilityWrapper.Ability.name + Environment.NewLine;
             }
 
-            return Environment.NewLine + "Pokemon Name: " + name + Environment.NewLine
+            return Environment.NewLine + "-------POKEMON INFORMATIONS-----------" + Environment.NewLine + "Pokemon Name: " + name + Environment.NewLine
                 + "Height: " + height + Environment.NewLine
                 + "Weight: " + weight + Environment.NewLine
                 + "Abilities: " + Environment.NewLine
-                + abilityname;
+                + abilityname + "-------------------------------------";
         }
 
     }

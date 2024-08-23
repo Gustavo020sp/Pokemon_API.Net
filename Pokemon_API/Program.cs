@@ -3,6 +3,7 @@ using static System.Net.WebRequestMethods;
 using System.Text.Json;
 using Pokemon_API.Entities;
 using Microsoft.VisualBasic;
+using Pokemon_API.Controller;
 
 namespace Pokemon_API
 {
@@ -10,7 +11,7 @@ namespace Pokemon_API
     {
         static void Main(string[] args)
         {
-            UserInteraction interaction = new UserInteraction();
+            TamagotchiController interaction = new TamagotchiController();
 
             interaction.GenerateInteraction();            
         }        
