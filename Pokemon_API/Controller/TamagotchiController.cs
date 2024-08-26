@@ -2,12 +2,18 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 
 namespace Pokemon_API.Controller
 {
     public class TamagotchiController
     {
+        bool hasMascot = false;
+        string name = "";
+        string pokemonName = "";
+        Mascot mascot = new Mascot();
+
         private const string WelcomeMessage = @"
 #######
    #     ##     #    #    ##      ####      ####    #####   ####    #    #  #
@@ -15,12 +21,15 @@ namespace Pokemon_API.Controller
    #   #    #   # ## #  #    #   #         #    #     #    #        ######  #
    #   ######   #    #  ######   #   ###   #    #     #    #        #    #  #
    #   #    #   #    #  #    #   #     #   #    #     #    #    #   #    #  #
-   #   #    #   #    #  #    #    ####      ####      #     ####    #    #  #";
+   #   #    #   #    #  #    #    ####      ####      #     ####    #    #  #
+
+";
 
         private enum MenuOption
         {
             AdoptMascot = 1,
             ViewMascots,
+            InteractMascots,
             Quit
         }
 
@@ -36,7 +45,7 @@ namespace Pokemon_API.Controller
 
         public void GenerateInteraction()
         {
-            string name = GetUserName();
+            name = GetUserName();
 
             MenuOption userChoice = DisplayMainMenu(name);
             while (userChoice != MenuOption.Quit)
@@ -47,7 +56,10 @@ namespace Pokemon_API.Controller
                         HandleAdoptMascot(name);
                         break;
                     case MenuOption.ViewMascots:
-                        ViewMascots();
+                        ViewMascot();
+                        break;
+                    case MenuOption.InteractMascots:                 
+                            InteractMascot();                      
                         break;
                 }
 
@@ -70,8 +82,9 @@ namespace Pokemon_API.Controller
             Console.WriteLine("--------------------------------------MENU------------------------------------");
             Console.Write($"{name}, Do you wish:"
                 + Environment.NewLine + "1 - Adopt a virtual mascot"
-                + Environment.NewLine + "2 - See your mascots"
-                + Environment.NewLine + "3 - Quit"
+                + Environment.NewLine + "2 - See your mascot"
+                + Environment.NewLine + "3 - Interact with your mascot"
+                + Environment.NewLine + "4 - QUIT"
                 + Environment.NewLine + "> ");
 
             if (int.TryParse(Console.ReadLine(), out int answer) && Enum.IsDefined(typeof(MenuOption), answer))
@@ -86,8 +99,7 @@ namespace Pokemon_API.Controller
         }
 
         private void HandleAdoptMascot(string name)
-        {
-            bool hasMascot = false;
+        {           
             MascotOption? selectedMascot = null;
 
             do
@@ -128,7 +140,7 @@ namespace Pokemon_API.Controller
         private void DisplayMascotOptions(string name, MascotOption mascotOption, ref bool hasMascot)
         {
             string pokemonUrl = GetPokemonUrl(mascotOption);
-            string pokemonName = mascotOption.ToString();
+            pokemonName = mascotOption.ToString();
 
             bool menuActive = true; // Controle do menu interno
             while (menuActive)
@@ -197,9 +209,9 @@ namespace Pokemon_API.Controller
             Console.WriteLine("     \\_____/ ");
         }
 
-        private void ViewMascots()
+        private void ViewMascot()
         {
-            if (mascots.Count == 0)
+            if (hasMascot == false)
             {
                 Console.WriteLine("You have no mascots yet!!");
             }
@@ -207,14 +219,68 @@ namespace Pokemon_API.Controller
             {
                 Console.WriteLine("");
                 Console.WriteLine("-----------------------------------");
-                Console.WriteLine("Your mascots:");
+                Console.WriteLine("          Your mascot:             ");
                 foreach (var mascot in mascots)
                 {
                     Console.WriteLine($"{mascot}");
                 }
+
+                InteractMascot();
             }
         }
 
+
+        //PLAY WITH MASCOT
+        public void InteractMascot()
+        {
+            if (hasMascot == false)
+            {
+                Console.WriteLine("You have no mascots yet!!");
+            }
+            else
+            {
+                bool menuActive2 = true; // Controle do menu interno
+
+                while (menuActive2 == true)
+                {
+
+                    Console.Write($"{name}, Do you wish:"
+                            + Environment.NewLine + $"1 - See how {pokemonName} is"
+                            + Environment.NewLine + $"2 - Feed {pokemonName}"
+                            + Environment.NewLine + "3 - Play with " + pokemonName
+                            + Environment.NewLine + "4 - BACK"
+                            + Environment.NewLine + "> ");
+
+                    if (int.TryParse(Console.ReadLine(), out int response2))
+                    {
+                        switch (response2)
+                        {
+                            case 1:
+                                mascot.StatusMascot();
+                                break;
+                            case 2:
+                                mascot.FeedMascot();
+                                break;
+                            case 3:
+                                mascot.PLayMascot();
+                                break;
+                            case 4:
+                                menuActive2 = false; // Sai do menu interno
+                                break;
+                            default:
+                                Console.WriteLine("Invalid option, please try again.");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input, please enter a number.");
+                    }
+                }
+            }
+        }
+
+        
         private static Mascot GetMascotData(MascotOption mascotOption)
         {
             // Fetch the data for the mascot
