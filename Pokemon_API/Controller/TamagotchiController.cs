@@ -284,19 +284,29 @@ namespace Pokemon_API.Controller
         private static Mascot GetMascotData(MascotOption mascotOption)
         {
             // Fetch the data for the mascot
-            var client = new RestClient(GetPokemonUrl(mascotOption));
-            var request = new RestRequest("", Method.Get);
-            var response = client.Execute(request);
+            try
+            {
+                var client = new RestClient(GetPokemonUrl(mascotOption));
+                var request = new RestRequest("", Method.Get);
 
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                var mascot = JsonSerializer.Deserialize<Mascot>(response.Content);
-                return mascot;
+                var response = client.Execute(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var mascot = JsonSerializer.Deserialize<Mascot>(response.Content);
+                    return mascot;
+                }
+                else
+                {
+                    Console.WriteLine(response.ErrorMessage);
+                    return null;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine(response.ErrorMessage);
-                return null;
+                // Log the exception message
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return null; // Retorna null em caso de exceção
             }
         }
 
