@@ -3,6 +3,17 @@
 ## Descrição
 Este projeto foi desenvolvido para realizar consultas em uma API de Pokémon. Ele permite ao usuário visualizar informações detalhadas de diferentes espécies de Pokémon em formato JSON.
 
+## Baixe diretamente no seu computador para executar
+Baixe o arquivo executável do aplicativo > [Baixe o arquivo ZIP aqui](https://github.com/Gustavo020sp/Pokemon_API.Net/releases/tag/v1.0.0)
+Extraia o conteúdo em uma pasta de sua escolha.
+Execute o aplicativo e siga as instruções na tela para selecionar e adotar seu Pokémon.
+Após a adoção, aproveite para interagir e cuidar do seu novo amigo!
+
+Requisitos
+Sistema Operacional: Windows (x64)
+Nenhuma instalação adicional de .NET é necessária (aplicativo autossuficiente).
+
+
 ## Instruções para Clonar e Executar
 
 1. Crie uma pasta em um diretório de sua preferência:
