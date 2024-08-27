@@ -4,7 +4,7 @@
 
 - C#
 
-- .NET
+- API do Pokémon
 
 - RestSharp
 
