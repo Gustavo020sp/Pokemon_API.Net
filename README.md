@@ -5,8 +5,9 @@ Este projeto foi desenvolvido para realizar consultas em uma API de Pokémon. El
 
 ## Baixe diretamente no seu computador para executar
 Baixe o arquivo executável do aplicativo > [Baixe o arquivo ZIP aqui](https://github.com/Gustavo020sp/Pokemon_API.Net/releases/tag/v1.0.0)
+
 Extraia o conteúdo em uma pasta de sua escolha.
-Execute o aplicativo e siga as instruções na tela para selecionar e adotar seu Pokémon.
+Execute o aplicativo Pokemon_API.exe e siga as instruções na tela para selecionar e adotar seu Pokémon.
 Após a adoção, aproveite para interagir e cuidar do seu novo amigo!
 
 Requisitos
@@ -14,7 +15,7 @@ Sistema Operacional: Windows (x64)
 Nenhuma instalação adicional de .NET é necessária (aplicativo autossuficiente).
 
 
-## Instruções para Clonar e Executar
+## Instruções para Clonar o código
 
 1. Crie uma pasta em um diretório de sua preferência:
 Navegue até o local onde deseja salvar o projeto no seu computador.
