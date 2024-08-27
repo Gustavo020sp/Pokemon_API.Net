@@ -1,10 +1,14 @@
 # Projeto .NET para Consultas em uma API de Pokémon
 
 ## Tecnologias utilizadas
-C#
-.NET
-RestSharp
-JSON
+
+- C#
+
+- .NET
+
+- RestSharp
+
+- JSON
 
 ## Descrição
 Este projeto foi desenvolvido para realizar consultas em uma API de Pokémon. Ele permite ao usuário visualizar informações detalhadas de diferentes espécies de Pokémon em formato JSON.
